@@ -1,0 +1,17 @@
+{
+  "name": "couch-crud-promise-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "group-test-crud.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ramda": "^0.25.0",
+    "supertest": "^3.0.0",
+    "tape": "^4.8.0"
+  }
+}
