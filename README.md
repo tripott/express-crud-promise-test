@@ -14,4 +14,4 @@ $ npm install express-crud-promise-test --save-dev
 ```
 ## Examples
 
-TO DO...coming soon!
+TO DO...coming soon! I promise.
