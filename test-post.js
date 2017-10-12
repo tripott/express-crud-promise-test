@@ -1,6 +1,7 @@
 const request = require('supertest') // perform http tests
+const { path, prop } = require('ramda')
 
-module.exports = (app, t, path, requestBody, pk) => {
+module.exports = (app, t, routePath, requestBody, pk) => {
   // use our express app to POST (add) a document (requestBody) to the db
   //  so we to test some things...
   // expect status code of 201 (resource was added/created)
@@ -10,21 +11,31 @@ module.exports = (app, t, path, requestBody, pk) => {
 
   return new Promise((resolve, reject) => {
     request(app)
-      .post(path)
+      .post(routePath)
       .send(requestBody)
       .expect(201)
       .then(httpResponseFromCouch => {
+        t.plan(3)
         t.equals(
-          httpResponseFromCouch.body.id,
+          prop('statusCode', httpResponseFromCouch),
+          201,
+          `POST ${routePath} received status code: ${prop(
+            'statusCode',
+            httpResponseFromCouch
+          )}`
+        )
+        t.equals(
+          path(['body', 'id'], httpResponseFromCouch),
           pk,
-          `POST ${path} PK value passed`
+          `POST ${routePath} PK value passed`
         )
         t.equals(
-          httpResponseFromCouch.body.ok,
+          path(['body', 'ok'], httpResponseFromCouch),
           true,
-          `POST ${path} "ok" value passed`
+          `POST ${routePath} "ok" value passed`
         )
-        resolve(httpResponseFromCouch.body)
+        t.end()
+        resolve(prop('body', httpResponseFromCouch))
       })
       .catch(err => reject(err))
   })

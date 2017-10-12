@@ -8,6 +8,12 @@ module.exports = (app, t, path, pk) => {
       .expect(200)
       .then(response => {
         const deletedResponse = prop('body', response)
+        t.plan(3)
+        t.equals(
+          prop('statusCode', response),
+          200,
+          `DELETE ${path} received status code: ${prop('statusCode', response)}`
+        )
         t.equals(
           prop('id', deletedResponse),
           pk,
@@ -18,6 +24,7 @@ module.exports = (app, t, path, pk) => {
           true,
           `DELETE ${path} expected "ok" value passed`
         )
+        t.end()
         resolve(deletedResponse)
       })
       .catch(err => reject(err))

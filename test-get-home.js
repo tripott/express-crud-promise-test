@@ -7,13 +7,17 @@ module.exports = app => {
     tape('TESTING GET /', t => {
       request(app)
         .get('/')
+        .expect(200)
         .then(res => {
-          t.plan(2)
-          t.equals(prop('text', res), 'The librarian welcomes you, shhhh.')
-          t.equals(prop('statusCode', res), 200)
-          resolve(res.text)
+          t.plan(1)
+          t.equals(
+            prop('statusCode', res),
+            200,
+            `GET / received status code: ${prop('statusCode', res)}`
+          )
+          t.end()
+          resolve(res)
         })
-        .then(() => t.end())
         .catch(err => {
           reject(err)
         })

@@ -5,7 +5,9 @@ module.exports = (app, t, path, compareResource) => {
   return new Promise((resolve, reject) => {
     request(app)
       .get(path)
+      .expect(200)
       .then(doc => {
+        t.plan(2)
         t.equals(
           doc.statusCode,
           200,
@@ -17,6 +19,7 @@ module.exports = (app, t, path, compareResource) => {
           omittedResource,
           `GET ${path} received expected resource`
         )
+        t.end()
         resolve(prop('body', doc))
       })
       .catch(err => reject(err))
