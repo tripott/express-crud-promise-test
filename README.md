@@ -35,7 +35,7 @@ Tests the create, read, update, and delete (CRUD) capabilities on an api route. 
 
 `testGroupCRUD()` accepts the following parameters:
 
-- `app` - ExpressJS application as its only parameter.
+- `app` - The ExpressJS application you're testing.  
 - `testName` - The name of your CRUD Test. Example: 'BOOKS CRUD TEST'
 - `path` - The path/route defined within your ExpressJS route middleware.  Example: `/books`
 - `postRequestBody` - The resource to add/POST to the database.
