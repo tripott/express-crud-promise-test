@@ -19,7 +19,7 @@ module.exports = (app, t, path, compareResource) => {
           omittedResource,
           `GET ${path} received expected resource`
         )
-        t.end()
+
         resolve(prop('body', doc))
       })
       .catch(err => reject(err))

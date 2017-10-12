@@ -24,7 +24,7 @@ module.exports = (app, t, path, pk) => {
           true,
           `DELETE ${path} expected "ok" value passed`
         )
-        t.end()
+
         resolve(deletedResponse)
       })
       .catch(err => reject(err))

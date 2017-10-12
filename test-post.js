@@ -34,7 +34,7 @@ module.exports = (app, t, routePath, requestBody, pk) => {
           true,
           `POST ${routePath} "ok" value passed`
         )
-        t.end()
+
         resolve(prop('body', httpResponseFromCouch))
       })
       .catch(err => reject(err))
