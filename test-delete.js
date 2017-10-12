@@ -1,5 +1,5 @@
 const request = require('supertest') // perform http tests
-const { omit, compose, prop } = require('ramda')
+const { prop } = require('ramda')
 
 module.exports = (app, t, path, pk) => {
   return new Promise((resolve, reject) => {

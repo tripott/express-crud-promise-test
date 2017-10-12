@@ -1,5 +1,4 @@
 const request = require('supertest') // perform http tests
-const { omit, compose, prop } = require('ramda') // ramda is neat
 
 module.exports = (app, t, path, requestBody, pk) => {
   // use our express app to POST (add) a document (requestBody) to the db
