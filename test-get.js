@@ -11,7 +11,7 @@ module.exports = (app, t, path, compareResource) => {
           200,
           `GET ${path} received status code: ${doc.statusCode}`
         )
-        const omittedResouced = compose(omit('_rev'), prop('body'))(doc)
+        const omittedResouced = compose(omit(['_rev']), prop('body'))(doc)
         t.same(
           compareResource,
           omittedResouced,
