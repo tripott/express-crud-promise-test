@@ -7,7 +7,6 @@ module.exports = (app, t, path, compareResource) => {
       .get(path)
       .expect(200)
       .then(doc => {
-        t.plan(2)
         t.equals(
           doc.statusCode,
           200,

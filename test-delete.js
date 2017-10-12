@@ -8,7 +8,7 @@ module.exports = (app, t, path, pk) => {
       .expect(200)
       .then(response => {
         const deletedResponse = prop('body', response)
-        t.plan(3)
+
         t.equals(
           prop('statusCode', response),
           200,

@@ -15,7 +15,6 @@ module.exports = (app, t, routePath, requestBody, pk) => {
       .send(requestBody)
       .expect(201)
       .then(httpResponseFromCouch => {
-        t.plan(3)
         t.equals(
           prop('statusCode', httpResponseFromCouch),
           201,

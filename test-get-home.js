@@ -9,7 +9,6 @@ module.exports = app => {
         .get('/')
         .expect(200)
         .then(res => {
-          t.plan(1)
           t.equals(
             prop('statusCode', res),
             200,
